@@ -1,6 +1,8 @@
  <?php
  require "../config/config.php";
  require "../include/header.php";
+
+ ob_start();
  ?>
 
   <!-- HOME -->
@@ -21,7 +23,8 @@
     <section class="site-section">
       <div class="container">
         <div class="row">
-          <?php if (isset($_POST["submit"])) {
+          <?php
+          if (isset($_POST["submit"])) {
               if (empty($_POST["email"]) or empty($_POST["password"])) {
                   echo '<div class="alert bg-danger text-white alert-danger" role="alert">Some input are empty</div>';
               } else {
@@ -46,8 +49,7 @@
                           $_SESSION["type"] = $select_login["type"];
 
                           header("location: " . APP_URL . "");
-
-                          echo '<div class="alert bg-success text-white alert-success" role="alert">Login Success</div>';
+                          exit();
                       } else {
                           echo '<div class="alert bg-danger text-white alert-danger" role="alert">User Invalid</div>';
                       }
@@ -55,7 +57,8 @@
                       echo '<div class="alert bg-danger text-white alert-danger" role="alert">User Invalid</div>';
                   }
               }
-          } ?>
+          }
+          ?>
           <div class="col-md-12">
             <form action="login.php" method="POST" class="p-4 border rounded">
 
