@@ -1,7 +1,5 @@
  <?php 
    include "config/config.php";
- ?>
- <?php
    include "include/header.php";
  ?>
  
@@ -12,8 +10,15 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-md-12">
             <div class="mb-5 text-center">
-              <h1 class="text-white font-weight-bold">The Easiest Way To Get Your Dream Job</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est, consequuntur perferendis.</p>
+              <?php
+                if(isset($_SESSION["username"])){
+                  echo '<h1 class="text-white font-weight-bold">Welcome '.$_SESSION["username"].'</h1>
+                        <p>Get the job what you loved!</p>';
+                } else {
+                  echo '<h1 class="text-white font-weight-bold">The Easiest Way To Get Your Dream Job</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est, consequuntur perferendis.</p>';
+                }
+              ?>
             </div>
             <form method="post" class="search-jobs-form">
               <div class="row mb-5">

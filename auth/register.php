@@ -1,6 +1,10 @@
     <?php 
       require '../config/config.php';
-      require '../include/header.php'; 
+      require '../include/header.php';
+
+      if(isset($_SESSION["username"])) {
+        header("location: ".APP_URL."");
+       } 
     ?>
     <!-- HOME -->
     <section class="section-hero overlay inner-page bg-image" style="background-image: url('../images/hero_1.jpg');" id="home-section">

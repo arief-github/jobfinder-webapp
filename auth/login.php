@@ -1,8 +1,12 @@
  <?php
- require "../config/config.php";
- require "../include/header.php";
+   require "../config/config.php";
+   require "../include/header.php";
 
- ob_start();
+   ob_start();
+
+   if(isset($_SESSION["username"])) {
+    header("location: ".APP_URL."");
+   }
  ?>
 
   <!-- HOME -->
