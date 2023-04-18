@@ -18,4 +18,4 @@ try {
 	echo $error_msg;
 }
 
-define("APP_URL", "http://localhost/jobboard");
+ define("APP_URL","http://localhost/jobboard");

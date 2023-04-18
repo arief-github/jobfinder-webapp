@@ -21,9 +21,7 @@
     <section class="site-section">
       <div class="container">
         <div class="row">
-
-          <?php 
-            if (isset($_POST["submit"])) {
+          <?php if (isset($_POST["submit"])) {
               if (empty($_POST["email"]) or empty($_POST["password"])) {
                   echo '<div class="alert bg-danger text-white alert-danger" role="alert">Some input are empty</div>';
               } else {
@@ -42,6 +40,13 @@
                       if (
                           password_verify($password, $select_login["password"])
                       ) {
+                          // adding session for logged in user
+                          $_SESSION["username"] = $select_login["username"];
+                          $_SESSION["id"] = $select_login["id"];
+                          $_SESSION["type"] = $select_login["type"];
+
+                          header("location: " . APP_URL . "");
+
                           echo '<div class="alert bg-success text-white alert-success" role="alert">Login Success</div>';
                       } else {
                           echo '<div class="alert bg-danger text-white alert-danger" role="alert">User Invalid</div>';
@@ -50,9 +55,7 @@
                       echo '<div class="alert bg-danger text-white alert-danger" role="alert">User Invalid</div>';
                   }
               }
-            } 
-          ?>
-      
+          } ?>
           <div class="col-md-12">
             <form action="login.php" method="POST" class="p-4 border rounded">
 
@@ -74,7 +77,6 @@
                   <input type="submit" name="submit" value="Log In" class="btn px-4 btn-primary text-white">
                 </div>
               </div>
-
             </form>
           </div>
         </div>

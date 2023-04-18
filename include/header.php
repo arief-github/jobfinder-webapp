@@ -1,3 +1,6 @@
+<?php 
+ session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,17 +12,17 @@
     <meta name="author" content="Free-Template.co" />
     <link rel="shortcut icon" href="ftco-32x32.png">
     
-    <link rel="stylesheet" href="../css/custom-bs.css">
-    <link rel="stylesheet" href="../css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="../fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../fonts/line-icons/style.css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/animate.min.css">
-    <link rel="stylesheet" href="../css/quill.snow.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/css/custom-bs.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/fonts/line-icons/style.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/css/animate.min.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/css/quill.snow.css">
 
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="../css/style.css">    
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/css/style.css">    
   </head>
   <body id="top">
 
@@ -51,11 +54,15 @@
 
           <nav class="mx-auto site-navigation">
             <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-              <li><a href="index.html" class="nav-link active">Home</a></li>
-              <li><a href="about.html">About</a></li>
+              <li><a href="<?php echo APP_URL;?>" class="nav-link active">Home</a></li>
+              <li><a href="<?php echo APP_URL;?>/page/about.php">About</a></li>
               
             
-              <li><a href="contact.html">Contact</a></li>
+              <li><a href="<?php echo APP_URL;?>/page/contact.php">Contact</a></li>
+              <?php if(isset($_SESSION['username'])) : ?>
+                  <li><a href="contact.html"><?php echo $_SESSION['username']; ?></a></li>
+                  <li><a href="<?php echo APP_URL;?>/auth/logout.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Logout</a></li>
+              <?php endif; ?>
               <li class="d-lg-none"><a href="post-job.html"><span class="mr-2">+</span> Post a Job</a></li>
               <li class="d-lg-none"><a href="login.html">Log In</a></li>
             </ul>
