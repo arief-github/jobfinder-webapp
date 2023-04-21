@@ -67,7 +67,15 @@
 
               <?php if(isset($_SESSION["username"])):?>
                 <div class="d-lg-inline-block">
-                  <p class="text-white font-weight-bold"><?php echo $_SESSION["username"]; ?></p>
+                  <div class="dropdown mb-3 mt-5">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <?php echo $_SESSION["username"]; ?>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a class="dropdown-item" href="<?php echo APP_URL;?>/page/public-profile.php?id=<?php echo $_SESSION["id"];?>">Your Profile</a>
+                    </div>
+                  </div>
+
                   <a href="<?php echo APP_URL; ?>/auth/logout.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-exit_outline"></span>Log Out</a>     
                 </div>
               <?php else:?>
